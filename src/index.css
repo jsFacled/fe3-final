@@ -51,6 +51,7 @@ footer {
   width: 90%;
   height: 40px;
   margin-top: 2rem;
+  background-color: aqua;
 }
 
 footer > img{
