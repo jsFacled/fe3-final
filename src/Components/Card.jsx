@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
 const Card = ({ name, username, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const isAlreadyFav = favorites.some(fav => fav.id === id);
+
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
-    setIsFavorite(true);
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (!favorites.includes(id)) {
-      favorites.push(id);
+    
+    if (!isAlreadyFav) {
+      favorites.push({ name, username, id });
       localStorage.setItem('favorites', JSON.stringify(favorites));
+      setIsFavorite(true)
     }
   }
 
+  useEffect(() => {
+    if(favorites.some(fav => fav.id === id)){
+      setIsFavorite(true)
+    };
+  }, []);
   return (
     <div className="card">
       <Link to={`/dentist/${id}`}>
@@ -30,7 +38,9 @@ const Card = ({ name, username, id }) => {
        <h2>{username}</h2>
        <h3>{id}</h3>
        </Link>
-        <button onClick={addFav} className="favButton">Add fav</button>
+       <button onClick={addFav} className={`favButton ${isFavorite ? 'favorite' : ''}`}>
+  {isFavorite ? 'Added to favorites ⭐' : 'Add to favorites'}
+</button>
     </div>
   );
 };
