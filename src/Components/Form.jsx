@@ -4,6 +4,7 @@ import { useState } from "react";
 const Form = () => {
   //Aqui deberan implementar el form completo con sus validaciones
   const [mensaje, setMensaje] = useState(null);
+  
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -31,19 +32,7 @@ const Form = () => {
     <div>
       <form 
         onSubmit={handleSubmit}
-        validations=
-        {{
-          nombre: {
-            required: true,
-            minLength: 6,
-          },
-          email: {
-            required: true,
-            email: true,
-          },
-        }}
-        errorMessage="Por favor verifique su información nuevamente"
-        submitLabel="Enviar">
+       >
         <label htmlFor="nombre">Nombre completo:</label>
         <input type="text" id="nombre" name="nombre" />
         <label htmlFor="email">Email:</label>
