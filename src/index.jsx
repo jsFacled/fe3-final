@@ -7,6 +7,7 @@ import Home from "./Routes/Home";
 import Contact from "./Routes/Contact";
 import Favs from "./Routes/Favs";
 import { ContextProvider } from "./Components/utils/global.context";
+import Detail from "./Routes/Detail";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +21,7 @@ root.render(
           <Route path="/home" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/favs" element={<Favs />} />
+          <Route path="/dentist/:id" element={<Detail />} />
           <Route path="*" element={<p>There's nothing here!</p>}></Route>
         </Route>
       </Routes>
