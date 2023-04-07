@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import "../index.css"
+import { ContextGlobal } from './utils/global.context'
 import { Link } from "react-router-dom";
 
 
 const Card = ({ name, username, id }) => {
+  const {theme}= useContext(ContextGlobal)
+
   const [isFavorite, setIsFavorite] = useState(false);
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   const isAlreadyFav = favorites.some(fav => fav.id === id);
@@ -24,7 +28,7 @@ const Card = ({ name, username, id }) => {
     };
   }, []);
   return (
-    <div className="card">
+    <div className= {`card ${theme}`}>
       <Link to={`/dentist/${id}`}>
         {/* En cada card deberan mostrar en name - username y el id */}
 

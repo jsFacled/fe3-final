@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import "../index.css"
+
 import Card from "../Components/Card";
+import { ContextGlobal } from '../Components/utils/global.context'
+
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
+  const {theme}= useContext(ContextGlobal)
+
   //En un estado guardo resultado Fetch
   const [data, setData] = useState();
   //Guardo error posible
@@ -33,7 +39,7 @@ const Home = () => {
 
   //Return----------
   return (
-    <main className="">
+    <main className={ `${theme}`}>
       <h1>Home</h1>
       <div className="card-grid">
         {/* Aqui deberias renderizar las cards */}
