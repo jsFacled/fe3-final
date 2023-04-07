@@ -10,8 +10,6 @@ const Navbar = () => {
 
   function handleChangeTheme(){
     changeTheme()
-    alert("estoy en navbar  e hice click")
-
   }
 
   return (
