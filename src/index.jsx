@@ -6,11 +6,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Routes/Home"
 import Contact from "./Routes/Contact"
 import Favs from "./Routes/Favs";
+import { ContextGlobal } from "./Components/utils/global.context";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <ContextGlobal.Provider>
+
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
@@ -22,5 +25,6 @@ root.render(
         </Route>
       </Routes>
     </Router>
+    </ContextGlobal.Provider>
   </React.StrictMode>
 );
