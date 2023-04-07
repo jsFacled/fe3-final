@@ -3,18 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Routes/Home"
-import Contact from "./Routes/Contact"
+import Home from "./Routes/Home";
+import Contact from "./Routes/Contact";
 import Favs from "./Routes/Favs";
-import { ContextGlobal } from "./Components/utils/global.context";
-
+import { ContextProvider } from "./Components/utils/global.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <ContextGlobal.Provider>
+  // <React.StrictMode>
 
-    <Router>
+  <Router>
+    <ContextProvider>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
@@ -24,7 +23,7 @@ root.render(
           <Route path="*" element={<p>There's nothing here!</p>}></Route>
         </Route>
       </Routes>
-    </Router>
-    </ContextGlobal.Provider>
-  </React.StrictMode>
+    </ContextProvider>
+  </Router>
+  //</React.StrictMode>
 );
