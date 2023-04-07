@@ -8,31 +8,9 @@ import { ContextGlobal } from '../Components/utils/global.context'
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
-  const {theme}= useContext(ContextGlobal)
+  const {theme, data,handleFetchDataDentist, errorFetch, loading}= useContext(ContextGlobal)
 
-  //En un estado guardo resultado Fetch
-  const [data, setData] = useState();
-  //Guardo error posible
-  const [errorFetch, setErrorFetch] = useState();
-  //Muestro un loading..
-  const [loading, setLoading] = useState(true);
-
-  //Funcion Fetch
-  const url = "https://jsonplaceholder.typicode.com/users";
-
-  async function handleFetchDataDentist() {
-    setLoading(true);
-    try {
-      const dentistFetch = await (await fetch(url)).json();
-      console.log("d...", dentistFetch);
-      setData(dentistFetch);
-    } catch (error) {
-      setErrorFetch(error.message);
-      console.log("Error en Fetching...", error.message);
-    }
-    setLoading(false);
-  }
-
+ 
   useEffect(() => {
     handleFetchDataDentist();
   }, []);
