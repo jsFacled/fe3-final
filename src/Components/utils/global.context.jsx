@@ -11,6 +11,8 @@ export const ContextProvider = ({ children }) => {
 
   const[theme, setTheme]= useState("light");
 
+  
+
    //En un estado guardo resultado Fetch
    const [data, setData] = useState();
    //Guardo error posible
